@@ -56,7 +56,7 @@ public class BookService : IBookService
 
     public async Task<List<BookGetDto>> GetAllBooksAsync()
     {
-        var books = await _bookRepository.GetAllAsync();
+        var books = await _bookRepository.GetAllAsync("Author","Sales");
 
         List<BookGetDto> result = new List<BookGetDto>();
 

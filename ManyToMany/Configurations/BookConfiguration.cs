@@ -1,7 +1,6 @@
 ﻿using ManyToMany.Models;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using Microsoft.EntityFrameworkCore.ValueGeneration;
 
 namespace ManyToMany.Configurations;
 

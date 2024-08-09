@@ -1,7 +1,7 @@
 ﻿using ManyToMany.Models.Common;
 using System.Linq.Expressions;
 
-namespace ManyToMany.Repositories.Interfaces;
+namespace ManyToMany.Repositories.Interfaces.Generic;
 
 public interface IRepository<T> where T : BaseEntity
 {
@@ -12,4 +12,6 @@ public interface IRepository<T> where T : BaseEntity
     void Update(T entity);
     void Delete(T entity);
     Task<int> SaveChangesAsync();
+
+
 }

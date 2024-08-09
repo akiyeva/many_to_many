@@ -1,11 +1,11 @@
 ﻿using ManyToMany.Contexts;
 using ManyToMany.Models.Common;
-using ManyToMany.Repositories.Interfaces;
+using ManyToMany.Repositories.Interfaces.Generic;
 using Microsoft.EntityFrameworkCore;
 using System.ComponentModel.DataAnnotations;
 using System.Linq.Expressions;
 
-namespace ManyToMany.Repositories.Implementations;
+namespace ManyToMany.Repositories.Implementations.Generic;
 
 public class Repository<T> : IRepository<T> where T : BaseEntity
 {
@@ -26,14 +26,14 @@ public class Repository<T> : IRepository<T> where T : BaseEntity
         _context.Set<T>().Remove(entity);
     }
 
-    public async Task<List<T>> GetAllAsync(params string[] includes)
+    public async Task<List<T>> GetAllAsync(params string[] includes) //"Author" ,"Sales.Customer"
     {
         var query = _context.Set<T>().AsQueryable(); //Select*from Books join Author
 
 
         foreach (var include in includes)
         {
-            query = query.Include(include);  //"Sales.Book"
+            query = query.Include(include);  //Select*from Books b join Author a on b.AuthorId=a.Id  join Sales s  on b.SalesId=s.Id  join Customer c s.CustomerId=c.Id 
         }
 
 
